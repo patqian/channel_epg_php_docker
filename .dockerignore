@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode
+.trae
+*.bak
+app.env
+docker-compose.yml
+README.md
+版本说明.txt

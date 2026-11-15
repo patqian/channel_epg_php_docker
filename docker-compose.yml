@@ -1,0 +1,16 @@
+services:
+  channel-epg:
+    build: .
+    image: channel-epg:latest
+    container_name: channel-epg
+    ports:
+      - "8080:80"
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - epg-data:/data
+      - ./app.env:/var/www/html/app.env:ro
+    restart: unless-stopped
+
+volumes:
+  epg-data:
