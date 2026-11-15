@@ -7,6 +7,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       libcurl4-openssl-dev \
       libonig-dev \
+      libsqlite3-dev \
       libzip-dev \
       libxml2-dev \
  && docker-php-ext-install -j"$(nproc)" curl pdo_sqlite sqlite3 mbstring zip soap gettext \

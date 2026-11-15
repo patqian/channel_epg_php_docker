@@ -313,7 +313,7 @@ docker push patqian1980/channel-epg:latest
 
 ### 2026-11-16 Docker 化与配置外置
 
-1. 新增 `Dockerfile`、`docker-compose.yml`、`docker/`，单容器部署，内置 sqlite3、curl、mbstring、gd、zip 等扩展
+1. 新增 `Dockerfile`、`docker-compose.yml`、`docker/`，单容器部署，内置 sqlite3、curl、mbstring、zip 等扩展
 2. 新增 `app.env` 运行时配置：后台密码、文件管理器账号、EPG 抓取源均可外部修改，刷新页面即生效
 3. 新增 `.github/workflows/docker-publish.yml`，自动构建 amd64/arm64 镜像并推送 Docker Hub
 4. 数据库与配置持久化到 `/data` 卷，Apache 层禁止直接下载 `.db`、`live.json` 等文件
