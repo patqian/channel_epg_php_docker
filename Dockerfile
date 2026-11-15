@@ -2,16 +2,15 @@ FROM php:8.2-apache
 
 ENV TZ=Asia/Shanghai
 
-# 安装本项目需要的 PHP 扩展（openssl、fileinfo 已内置）
+# 安装编译依赖（curl、sqlite3、pdo_sqlite、openssl、fileinfo 官方镜像已内置）
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-      libcurl4-openssl-dev \
       libonig-dev \
-      libsqlite3-dev \
       libzip-dev \
-      libxml2-dev \
- && docker-php-ext-install -j"$(nproc)" curl pdo_sqlite sqlite3 mbstring zip soap gettext \
  && rm -rf /var/lib/apt/lists/*
+
+# 编译官方镜像未启用的扩展（mbstring 用于中文处理，zip 供文件管理器压缩/解压）
+RUN docker-php-ext-install -j"$(nproc)" mbstring zip
 
 # PHP 运行参数与 Apache 安全配置
 COPY docker/php.ini /usr/local/etc/php/conf.d/zz-app.ini
