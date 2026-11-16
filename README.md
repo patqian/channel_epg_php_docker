@@ -246,6 +246,26 @@ docker compose up -d
 | `APP_MYFILE_PASSWORD` | `admin123` | `myfile.php` 密码 |
 | `APP_XML_URLS` | 内置 3 个源 | `xml2db.php` 抓取的节目单地址，多个用英文逗号分隔 |
 
+app.env
+
+```bash
+# ============================================================
+# 站点配置（修改后刷新页面即可生效；用 Docker 环境变量时需重启）
+# 本文件含密码，请勿提交到公开仓库
+# ============================================================
+
+# 数据库管理后台 channel.php 的登录密码
+APP_ADMIN_PASSWORD=admin
+
+# 在线文件管理器 myfile.php 的账号与密码
+APP_MYFILE_USER=admin
+APP_MYFILE_PASSWORD=admin123
+
+# xml2db.php 抓取的节目单地址，多个用英文逗号分隔，支持 .xml 与 .xml.gz
+APP_XML_URLS=https://gitee.com/taksssss/tv/raw/main/epg/112114.xml.gz,http://e.erw.cc/cc.xml.gz,https://gitee.com/taksssss/tv/raw/main/epg/51zmt.xml.gz
+
+```
+
 读取优先级：**环境变量 > app.env > 代码默认值**。
 
 - 修改 `app.env` 后刷新页面即生效，无需重启容器
